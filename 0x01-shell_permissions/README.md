@@ -1,1 +1,1 @@
-Readme details later
+## Shell Perms
