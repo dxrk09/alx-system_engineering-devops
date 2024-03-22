@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Define variables
+key_name="school"
+passphrase="betty"
+
+# RSA key pair using variables
+ssh-keygen -t rsa -b 4096 -N "$passphrase" -f "$key_name"

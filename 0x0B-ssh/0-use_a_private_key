@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Define variables
+server_address="52.87.233.136"
+private_key="~/.ssh/school"
+user="ubuntu"
+
+# SSH connection using the private key and user
+ssh -i "$private_key" "$user"@"$server_address"
