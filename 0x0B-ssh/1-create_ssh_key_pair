@@ -1,8 +1,3 @@
-#!/bin/bash
-
-# Define variables
-key_name="school"
-passphrase="betty"
-
-# RSA key pair using variables
-ssh-keygen -t rsa -b 4096 -N "$passphrase" -f "$key_name"
+#!/usr/bin/env bash
+# Connect to your server
+ssh -i ~/.ssh/school ubuntu@52.87.233.136
