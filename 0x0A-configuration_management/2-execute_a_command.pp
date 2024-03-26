@@ -1,4 +1,6 @@
- exec { 'killmenow':
-    command => 'pkill killmenow',
-    path        => ['/bin', '/usr/bin'], # Specify PATH environment variable
-  }
+# kill process killmenow
+
+exec { 'pkill':
+  command  => 'pkill killmenow',
+  provider => 'shell',
+}
