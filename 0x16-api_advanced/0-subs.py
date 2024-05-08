@@ -1,22 +1,17 @@
 #!/usr/bin/python3
-"""Function to query subscribers on a given Reddit subreddit."""
+"""
+Contains the number_of_subscribers function
+"""
+
 import requests
 
+
 def number_of_subscribers(subreddit):
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'MyBot/1.0'}  # Set a custom User-Agent to avoid rate limiting
-    
-    try:
-        response = requests.get(url, headers=headers)
-        data = response.json()
-        
-        # Check if the subreddit exists
-        if 'error' in data:
-            if data['error'] == 404:  # Subreddit not found
-                return 0
-            else:
-                raise Exception(f"Reddit API returned an error: {data['message']}")
-        
-        # Extract subscriber count
-        subscribers = data['data']['subscribers']
-        return subscribers
+    """returns the number of subscribers for a given subreddit"""
+    if subreddit is None or type(subreddit) is not str:
+        return 0
+    r = requests.get('http://www.reddit.com/r/{}/about.json'.format(subreddit),
+                     headers={'User-Agent': '0x16-api_advanced:project:\
+v1.0.0 (by /u/firdaus_cartoon_jr)'}).json()
+    subs = r.get("data", {}).get("subscribers", 0)
+    return subs
